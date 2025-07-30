@@ -1,0 +1,320 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-color: #1e1e2f;
+  color: #f5f5f5;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.App-header,
+.App-main {
+  padding: 0 1rem;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.App-header-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #ffffff;
+}
+
+.App-header-info {
+  display: flex;
+  align-items: center;
+}
+
+.App-header-githubLink {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.App-header-githubLink:hover {
+  opacity: 0.8;
+}
+
+.App-header-githubIcon {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.App-header-githubLink-text {
+  margin-left: 0.5rem;
+}
+
+.App-main {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.App-info {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.App-countrySelect {
+  display: block;
+  margin: 0 auto 2rem auto;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #2c2c3e;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px #444;
+  appearance: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  max-width: 320px;
+  width: 100%;
+}
+
+.App-countrySelect:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.u-fullWidth {
+  width: 100%;
+}
+
+.App-countriesView {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.App-countryCard {
+  background-color: #2a2a40;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.App-countryCard:hover {
+  transform: translateY(-4px);
+}
+
+.App-countryCard-image {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.App-countryCard-image.is-loading {
+  background-color: #444;
+  animation: pulse 1.5s infinite;
+  height: 200px;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #444;
+  }
+  50% {
+    background-color: #555;
+  }
+  100% {
+    background-color: #444;
+  }
+}
+
+.App-countryCard-title {
+  font-size: 1.3rem;
+  margin: 0.8rem 0 0.5rem 0;
+}
+
+.App-countryCard-capital,
+.App-countryCard-region,
+.App-countryCard-subregion,
+.App-countryCard-population,
+.App-countryCard-area-highlight,
+.App-countryCard-languages,
+.App-countryCard-currencies-highlight {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+  color: #dcdcdc;
+  line-height: 1.4;
+}
+
+.App-countryCard-capital-highlight,
+.App-countryCard-region-highlight,
+.App-countryCard-subregion-highlight,
+.App-countryCard-population-highlight,
+.App-countryCard-area-highlight,
+.App-countryCard-languages-highlight,
+.App-countryCard-currencies-highlight {
+  font-weight: 600;
+  color: #1e90ff;
+}
+
+.App-countryCard-mapButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-top: 0.8rem;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.App-countryCard-mapButton:hover {
+  background-color: #3399ff;
+}
+
+.App-countryCard-mapIcon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.App-countryCard-mapText {
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+.App-pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.App-pagination-button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.App-pagination-button:hover {
+  background-color: #666;
+}
+
+.App-pagination-button.is-active {
+  background-color: #fff;
+  color: #222;
+}
+
+.App-pagination-button--next,
+.Pagination-button--prev {
+  background-color: #007bff;
+}
+
+.App-pagination-button--next:hover,
+.App-pagination-button--prev:hover {
+  background-color: #3399ff;
+}
+
+.App-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  color: #1e90ff;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.App-loading-spinner {
+  animation: rotate 2s linear infinite;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.App-loading-spinner-path {
+  stroke: #1e90ff;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+@media (width < 600px) {
+  .App {
+    padding: 1rem;
+  }
+
+  .App-header,
+  .App-main {
+    padding: 0;
+  }
+
+  .App-header {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .App-header-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .App-header-info {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .App-title {
+    font-size: 1.6rem;
+  }
+
+  .App-countrySelect {
+    width: 100%;
+  }
+
+  .App-countryCard-title {
+    font-size: 1.1rem;
+  }
+
+  .App-pagination-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
