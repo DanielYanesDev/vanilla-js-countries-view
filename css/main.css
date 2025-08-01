@@ -4,9 +4,51 @@
   padding: 0;
 }
 
+.App.light {
+  /* Light theme */
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --card-bg: #f1f1f1;
+  --card-text: #333333;
+  --highlight-color: #1e90ff;
+  --secondary-text: #444444;
+  --select-bg: #e0e0e0;
+  --select-text: #000000;
+  --border-color: #ccc;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --button-hover-bg: #3399ff;
+  --pagination-bg: #ddd;
+  --pagination-text: #000;
+  --pagination-active-bg: #007bff;
+  --pagination-active-text: #fff;
+  --spinner-stroke: #1e90ff;
+}
+
+.App.dark {
+  /* Dark theme overrides */
+  --bg-color: #1e1e2f;
+  --text-color: #f5f5f5;
+  --card-bg: #2a2a40;
+  --card-text: #dcdcdc;
+  --highlight-color: #1e90ff;
+  --secondary-text: #dcdcdc;
+  --select-bg: #2c2c3e;
+  --select-text: #ffffff;
+  --border-color: #444;
+  --button-bg: #1e90ff;
+  --button-text: #ffffff;
+  --button-hover-bg: #3399ff;
+  --pagination-bg: #444;
+  --pagination-text: #fff;
+  --pagination-active-bg: #fff;
+  --pagination-active-text: #222;
+  --spinner-stroke: #1e90ff;
+}
+
 .App {
-  background-color: #1e1e2f;
-  color: #f5f5f5;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   min-height: 100vh;
@@ -27,34 +69,75 @@
 .App-header-title {
   text-align: center;
   font-size: 2.2rem;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 .App-header-info {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
 }
 
-.App-header-githubLink {
-  color: #ffffff;
+.App-header-info-githubLink {
+  color: var(--text-color);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   transition: opacity 0.2s ease;
 }
 
-.App-header-githubLink:hover {
+.App-header-info-githubLink:hover {
   opacity: 0.8;
 }
 
-.App-header-githubIcon {
+.App-header-info-githubIcon {
   width: 28px;
   height: 28px;
   fill: currentColor;
 }
 
-.App-header-githubLink-text {
+.App-header-info-githubLink-text {
   margin-left: 0.5rem;
+}
+
+.App-header-info-themeToggle {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid var(--border-color);
+  color: var(--button-text);
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    border-color 0.3s ease;
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.App.light .App-header-info-themeToggle {
+  background-color: rgba(0, 123, 255, 0.08);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.App.dark .App-header-info-themeToggle {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.App-header-info-themeToggle:hover {
+  background-color: rgba(30, 144, 255, 0.2);
+  transform: scale(1.08);
+  border-color: var(--highlight-color);
+}
+
+.App-header-info-themeToggle:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 3px;
 }
 
 .App-main {
@@ -75,9 +158,9 @@
   font-size: 1rem;
   border: none;
   border-radius: 6px;
-  background-color: #2c2c3e;
-  color: #ffffff;
-  box-shadow: 0 0 0 2px #444;
+  background-color: var(--select-bg);
+  color: var(--select-text);
+  box-shadow: 0 0 0 2px var(--border-color);
   appearance: none;
   cursor: pointer;
   transition: box-shadow 0.2s ease;
@@ -87,7 +170,7 @@
 
 .App-countrySelect:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #007bff;
+  box-shadow: 0 0 0 2px var(--highlight-color);
 }
 
 .u-fullWidth {
@@ -101,7 +184,8 @@
 }
 
 .App-countryCard {
-  background-color: #2a2a40;
+  background-color: var(--card-bg);
+  color: var(--card-text);
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -119,20 +203,20 @@
 }
 
 .App-countryCard-image.is-loading {
-  background-color: #444;
+  background-color: var(--border-color);
   animation: pulse 1.5s infinite;
   height: 200px;
 }
 
 @keyframes pulse {
   0% {
-    background-color: #444;
+    background-color: var(--border-color);
   }
   50% {
     background-color: #555;
   }
   100% {
-    background-color: #444;
+    background-color: var(--border-color);
   }
 }
 
@@ -150,7 +234,7 @@
 .App-countryCard-currencies-highlight {
   font-size: 1.2rem;
   margin: 0.2rem 0;
-  color: #dcdcdc;
+  color: var(--secondary-text);
   line-height: 1.4;
 }
 
@@ -162,26 +246,26 @@
 .App-countryCard-languages-highlight,
 .App-countryCard-currencies-highlight {
   font-weight: 600;
-  color: #1e90ff;
+  color: var(--highlight-color);
 }
 
 .App-countryCard-mapButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #1e90ff;
+  background-color: var(--button-bg);
   border: none;
   border-radius: 6px;
   padding: 0.5rem;
   margin-top: 0.8rem;
-  color: #ffffff;
+  color: var(--button-text);
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.2s ease;
 }
 
 .App-countryCard-mapButton:hover {
-  background-color: #3399ff;
+  background-color: var(--button-hover-bg);
 }
 
 .App-countryCard-mapIcon {
@@ -204,8 +288,8 @@
 }
 
 .App-pagination-button {
-  background-color: #444;
-  color: #fff;
+  background-color: var(--pagination-bg);
+  color: var(--pagination-text);
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
@@ -215,22 +299,22 @@
 }
 
 .App-pagination-button:hover {
-  background-color: #666;
+  background-color: var(--button-hover-bg);
 }
 
 .App-pagination-button.is-active {
-  background-color: #fff;
-  color: #222;
+  background-color: var(--pagination-active-bg);
+  color: var(--pagination-active-text);
 }
 
 .App-pagination-button--next,
 .Pagination-button--prev {
-  background-color: #007bff;
+  background-color: var(--button-bg);
 }
 
 .App-pagination-button--next:hover,
 .App-pagination-button--prev:hover {
-  background-color: #3399ff;
+  background-color: var(--button-hover-bg);
 }
 
 .App-loading {
@@ -238,7 +322,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  color: #1e90ff;
+  color: var(--highlight-color);
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -251,7 +335,7 @@
 }
 
 .App-loading-spinner-path {
-  stroke: #1e90ff;
+  stroke: var(--spinner-stroke);
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
 }
